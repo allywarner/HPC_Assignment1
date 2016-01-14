@@ -13,8 +13,10 @@ void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*com
     
     size_t pivot = partition(arrayBase,arraySize,elementSize,compar);
     
-    //quickSort(arrayBase)
-    //quickSort(arrayBase)
+    char* arrayBaseChar = (char*)arrayBase;
+    
+    quickSort(arrayBaseChar,pivot-1,elementSize,compar);
+    quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
 }
 
 size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*compar)(const void*,const void*)){
