@@ -6,12 +6,14 @@ void swap(void*,void*,size_t);
 //int compare(const void*, const void*);
 
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
+    cout << arraySize << endl;
     
     if (arraySize <= 1){
         return;
     }
     
     size_t pivot = partition(arrayBase,arraySize,elementSize,compar);
+    //cout << pivot << ", " << arraySize << endl;
     
     char* arrayBaseChar = (char*)arrayBase;
     
@@ -41,7 +43,6 @@ void swap(void* a, void* b, size_t size){
     // C99, use malloc otherwise
     // char serves as the type for "generic" byte arrays
     //Swap function found at: http://stackoverflow.com/questions/2232706/swapping-objects-using-pointers
-    
     memcpy(temp,b,size);
     memcpy(b,a,size);
     memcpy(a,temp,size);
@@ -51,6 +52,23 @@ int compareInt(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
     return(*(int*)a - *(int*)b);
 }
+
+int compareDouble(const void* a, const void* b){
+    //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
+    return(*(double*)a - *(double*)b);
+}
+
+int compareLong(const void* a, const void* b){
+    //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
+    return(*(long*)a - *(long*)b);
+}
+
+int compareFloat(const void* a, const void* b){
+    //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
+    return(*(float*)a - *(float*)b);
+}
+
+//int compareStructure
 
 int main(int argc, char* argv[]){
 
