@@ -47,12 +47,20 @@ void swap(void* a, void* b, size_t size){
     memcpy(a,temp,size);
 }
 
-int compare(const void* a, const void* b){
+int compareInt(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
     return(*(int*)a - *(int*)b);
 }
 
 int main(int argc, char* argv[]){
 
+    int intArray[] = {2,5,8,1,9,4,7,3,6};
+    size_t intArraySize = sizeof(intArray)/sizeof(int);
+    quickSort(intArray,intArraySize,sizeof(int),compareInt);
+    
+    for(auto n:intArray){
+        cout << n << " ";
+    }
+    cout << endl;
     
 }
