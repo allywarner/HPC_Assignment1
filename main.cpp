@@ -8,6 +8,11 @@ using namespace std;
 size_t partition(void*,size_t,size_t,int(*)(const void*, const void*));
 void swap(void*,void*,size_t);
 
+typedef struct _Point {
+    double x;
+    double y;
+} Point;
+
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
     
     if (arraySize > 0){
@@ -16,10 +21,10 @@ void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*com
         
         char* arrayBaseChar = (char*)arrayBase;
         
-        if (pivot!= 0){
-            quickSort(arrayBaseChar,pivot,elementSize,compar);
-            quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
-        }
+        
+        quickSort(arrayBaseChar,pivot,elementSize,compar);
+        quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
+        
     }
 }
 
@@ -86,46 +91,62 @@ int compareFloat(const void* a, const void* b){
     return 0;
 }
 
-//int compareStructure
+int compareStructure(const void* a, const void *b) {
+    Point da = *(Point *)a;
+    Point db = *(Point *)b;
+    if (da.y < db.y) return -1;
+    if (db.y < da.y) return 1;
+    if (da.y == db.y){
+        if (da.x < db.x) return -1;
+        if (db.x < da.x) return 1;
+    }
+    return 0;
+}
 
 int main(int argc, char* argv[]){
+ 
+    if (argc < 2) {
+        cerr << "Error. Print usage" << endl;
+        return 1;
+    }
+    
+    // generate a random array of length n
+    int arrayLength = atoi(argv[1]);
+    
+    //for integers
+    int *intArray = new int[arrayLength];
+    for (int i = 0;i < arrayLength; i++){
+        intArray[i] = rand();
+    }
+    quickSort(intArray,arrayLength,sizeof(int),compareInt);
+    
+    delete [] intArray;
+    
+    //for doubles
+    double *doubleArray = new double[arrayLength];
+    for (int i = 0;i < arrayLength; i++){
+        doubleArray[i] = rand()/RAND_MAX;
+    }
+    quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
+    
+    delete [] doubleArray;
+    
+    //for floats
+    float *floatArray = new float[arrayLength];
+    for (int i = 0;i < arrayLength; i++){
+        floatArray[i] = rand()/RAND_MAX;
+    }
+    quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
 
-    int intArray[] = {2,5,8,1,9,4,7,3,6};
-    size_t intArraySize = sizeof(intArray)/sizeof(int);
-    quickSort(intArray,intArraySize,sizeof(int),compareInt);
+    delete [] floatArray;
     
-    for(auto n:intArray){
-        cout << n << " ";
+    //for longs
+    long *longArray = new long[arrayLength];
+    for (int i = 0;i < arrayLength; i++){
+        longArray[i] = rand()/RAND_MAX;
     }
-    cout << endl;
+    quickSort(longArray,arrayLength,sizeof(long),compareLong);
     
-    double doubleArray[] = {0.2,0.5,0.8,0.1,0.9,0.4,0.7,0.3,0.6};
-    size_t doubleArraySize = sizeof(doubleArray)/sizeof(double);
-    quickSort(doubleArray,doubleArraySize,sizeof(double),compareDouble);
-    
-    for(auto n:doubleArray){
-        cout << n << " ";
-    }
-    cout << endl;
-    
-    float floatArray[] = {0.2,0.5,0.8,0.1,0.9,0.4,0.7,0.3,0.6};
-    size_t floatArraySize = sizeof(floatArray)/sizeof(float);
-    quickSort(floatArray,floatArraySize,sizeof(float),compareFloat);
-    
-    for(auto n:floatArray){
-        cout << n << " ";
-    }
-    cout << endl;
-    
-    long longArray[] = {92233720, 52233720,32233720,12233720};
-    size_t longArraySize = sizeof(longArray)/sizeof(long);
-    quickSort(longArray,longArraySize,sizeof(long),compareLong);
-    
-    for(auto n:longArray){
-        cout << n << " ";
-    }
-    cout << endl;
-
-    
+    delete [] longArray;
     
 }
