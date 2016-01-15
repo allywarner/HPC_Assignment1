@@ -6,7 +6,6 @@ void swap(void*,void*,size_t);
 //int compare(const void*, const void*);
 
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
-    cout << arraySize << endl;
     
     if (arraySize <= 1){
         return;
@@ -30,7 +29,7 @@ size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*comp
     
     for(int j = 0; j < arraySize;j++){
         if(compar(arrayBaseChar+(j*elementSize),pivot) <= 0){
-            swap(arrayBaseChar+(j*elementSize),pivot,elementSize);
+            swap(arrayBaseChar+(j*elementSize),arrayBaseChar+(index*elementSize),elementSize);
             index += 1;
         }
     }
@@ -39,10 +38,10 @@ size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*comp
 }
 
 void swap(void* a, void* b, size_t size){
-    char temp[size];
     // C99, use malloc otherwise
     // char serves as the type for "generic" byte arrays
     //Swap function found at: http://stackoverflow.com/questions/2232706/swapping-objects-using-pointers
+    char temp[size];
     memcpy(temp,b,size);
     memcpy(b,a,size);
     memcpy(a,temp,size);
@@ -80,5 +79,15 @@ int main(int argc, char* argv[]){
         cout << n << " ";
     }
     cout << endl;
+    
+    double doubleArray[] = {0.2,0.5,0.8,0.1,0.9,0.4,0.7,0.3,0.6};
+    size_t doubleArraySize = sizeof(doubleArray)/sizeof(double);
+    quickSort(doubleArray,doubleArraySize,sizeof(double),compareDouble);
+    
+    for(auto n:doubleArray){
+        cout << n << " ";
+    }
+    cout << endl;
+    
     
 }
