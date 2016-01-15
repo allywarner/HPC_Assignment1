@@ -117,7 +117,7 @@ int main(int argc, char* argv[]){
     }
     cout << endl;
     
-    double longArray[] = {9223372036854775807, 5223372036854775807,3223372036854775807,1223372036854775807};
+    long longArray[] = {92233720, 52233720,32233720,12233720};
     size_t longArraySize = sizeof(longArray)/sizeof(long);
     quickSort(longArray,longArraySize,sizeof(long),compareLong);
     
