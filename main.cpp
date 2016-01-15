@@ -118,8 +118,8 @@ int main(int argc, char* argv[]){
     cout << endl;
     
     double longArray[] = {9223372036854775807, 5223372036854775807,3223372036854775807,1223372036854775807};
-    size_t longArraySize = sizeof(longArray)/sizeof(double);
-    quickSort(longArray,longArraySize,sizeof(long),compareDouble);
+    size_t longArraySize = sizeof(longArray)/sizeof(long);
+    quickSort(longArray,longArraySize,sizeof(long),compareLong);
     
     for(auto n:longArray){
         cout << n << " ";
