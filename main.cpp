@@ -15,8 +15,10 @@ void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*com
     
     char* arrayBaseChar = (char*)arrayBase;
     
-    quickSort(arrayBaseChar,pivot-1,elementSize,compar);
-    quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
+    if (pivot!= 0){
+        quickSort(arrayBaseChar,pivot-1,elementSize,compar);
+        quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
+    }
 }
 
 size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*compar)(const void*,const void*)){
@@ -32,7 +34,9 @@ size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*comp
             index += 1;
         }
     }
-    swap(arrayBaseChar+(index*elementSize),pivot,elementSize);
+    if (index < arraySize){
+        swap(arrayBaseChar+(index*elementSize),pivot,elementSize);
+    }
     return index;
 }
 
@@ -113,14 +117,14 @@ int main(int argc, char* argv[]){
     }
     cout << endl;
     
-    //double longArray[] = {};
-    //size_t longArraySize = sizeof(longArray)/sizeof(double);
-    //quickSort(longArray,longArraySize,sizeof(long),compareDouble);
+    double longArray[] = {9223372036854775807, 5223372036854775807,3223372036854775807,1223372036854775807};
+    size_t longArraySize = sizeof(longArray)/sizeof(double);
+    quickSort(longArray,longArraySize,sizeof(long),compareDouble);
     
-    //for(auto n:longArray){
-    //    cout << n << " ";
-    //}
-    //cout << endl;
+    for(auto n:longArray){
+        cout << n << " ";
+    }
+    cout << endl;
 
     
     
