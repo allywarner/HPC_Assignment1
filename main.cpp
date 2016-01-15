@@ -1,13 +1,16 @@
+//Ally Warner
+//Assignment 1
+//High Performance Computing
+
 #include <iostream>
 
 using namespace std;
 size_t partition(void*,size_t,size_t,int(*)(const void*, const void*));
 void swap(void*,void*,size_t);
-//int compare(const void*, const void*);
 
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
     
-    if (arraySize <= 1){
+    if (arraySize > 0){
         return;
     }
     
@@ -16,7 +19,7 @@ void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*com
     char* arrayBaseChar = (char*)arrayBase;
     
     if (pivot!= 0){
-        quickSort(arrayBaseChar,pivot-1,elementSize,compar);
+        quickSort(arrayBaseChar,pivot,elementSize,compar);
         quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
     }
 }
@@ -28,15 +31,13 @@ size_t partition(void* arrayBase,size_t arraySize, size_t elementSize, int(*comp
     char* pivot = arrayBaseChar + ((arraySize - 1)*elementSize);
     size_t index = 0;
     
-    for(int j = 0; j < arraySize;j++){
+    for(int j = 0; j < arraySize-1;j++){
         if(compar(arrayBaseChar+(j*elementSize),pivot) <= 0){
             swap(arrayBaseChar+(j*elementSize),arrayBaseChar+(index*elementSize),elementSize);
             index += 1;
         }
     }
-    if (index < arraySize){
-        swap(arrayBaseChar+(index*elementSize),pivot,elementSize);
-    }
+    swap(arrayBaseChar+(index*elementSize),pivot,elementSize);
     return index;
 }
 
