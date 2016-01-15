@@ -11,16 +11,15 @@ void swap(void*,void*,size_t);
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
     
     if (arraySize > 0){
-        return;
-    }
-    
-    size_t pivot = partition(arrayBase,arraySize,elementSize,compar);
-    
-    char* arrayBaseChar = (char*)arrayBase;
-    
-    if (pivot!= 0){
-        quickSort(arrayBaseChar,pivot,elementSize,compar);
-        quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
+        
+        size_t pivot = partition(arrayBase,arraySize,elementSize,compar);
+        
+        char* arrayBaseChar = (char*)arrayBase;
+        
+        if (pivot!= 0){
+            quickSort(arrayBaseChar,pivot,elementSize,compar);
+            quickSort(arrayBaseChar + (pivot+1)*elementSize,arraySize - (pivot+1),elementSize,compar);
+        }
     }
 }
 
