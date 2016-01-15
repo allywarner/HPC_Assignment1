@@ -12,7 +12,6 @@ void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*com
     }
     
     size_t pivot = partition(arrayBase,arraySize,elementSize,compar);
-    //cout << pivot << ", " << arraySize << endl;
     
     char* arrayBaseChar = (char*)arrayBase;
     
@@ -49,22 +48,38 @@ void swap(void* a, void* b, size_t size){
 
 int compareInt(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
-    return(*(int*)a - *(int*)b);
+    int da = *(int*)a;
+    int db = *(int*)b;
+    if (da < db) return -1;
+    if (db < da) return 1;
+    return 0;
 }
 
 int compareDouble(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
-    return(*(double*)a - *(double*)b);
+    double da = *(double*)a;
+    double db = *(double*)b;
+    if (da < db) return -1;
+    if (db < da) return 1;
+    return 0;
 }
 
 int compareLong(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
-    return(*(long*)a - *(long*)b);
+    long da = *(long*)a;
+    long db = *(long*)b;
+    if (da < db) return -1;
+    if (db < da) return 1;
+    return 0;
 }
 
 int compareFloat(const void* a, const void* b){
     //compare function found at:http://www.cplusplus.com/reference/cstdlib/qsort/
-    return(*(float*)a - *(float*)b);
+    float da = *(float*)a;
+    float db = *(float*)b;
+    if (da < db) return -1;
+    if (db < da) return 1;
+    return 0;
 }
 
 //int compareStructure
@@ -88,6 +103,16 @@ int main(int argc, char* argv[]){
         cout << n << " ";
     }
     cout << endl;
+    
+    //double longArray[] = {};
+    //size_t longArraySize = sizeof(longArray)/sizeof(double);
+    //quickSort(longArray,longArraySize,sizeof(long),compareDouble);
+    
+    //for(auto n:longArray){
+    //    cout << n << " ";
+    //}
+    //cout << endl;
+
     
     
 }
