@@ -104,6 +104,15 @@ int main(int argc, char* argv[]){
     }
     cout << endl;
     
+    float floatArray[] = {0.2,0.5,0.8,0.1,0.9,0.4,0.7,0.3,0.6};
+    size_t floatArraySize = sizeof(floatArray)/sizeof(float);
+    quickSort(floatArray,floatArraySize,sizeof(float),compareFloat);
+    
+    for(auto n:floatArray){
+        cout << n << " ";
+    }
+    cout << endl;
+    
     //double longArray[] = {};
     //size_t longArraySize = sizeof(longArray)/sizeof(double);
     //quickSort(longArray,longArraySize,sizeof(long),compareDouble);
