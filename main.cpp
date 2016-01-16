@@ -165,7 +165,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("double") == 0){
         double *doubleArray = new double[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            doubleArray[i] = rand()/RAND_MAX;
+            doubleArray[i] = ((double)rand())/RAND_MAX;;
         }
         clock_t startTime = clock();
         quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
@@ -183,7 +183,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("float") == 0){
         float *floatArray = new float[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            floatArray[i] = rand()/RAND_MAX;
+            doubleArray[i] = ((float)rand())/RAND_MAX;;
         }
         clock_t startTime = clock();
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
@@ -201,7 +201,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("long") == 0){
         long *longArray = new long[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            longArray[i] = rand()/RAND_MAX;
+            longArray[i] = rand()*1200;
         }
         clock_t startTime = clock();
         quickSort(longArray,arrayLength,sizeof(long),compareLong);
