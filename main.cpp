@@ -155,7 +155,7 @@ int main(int argc, char* argv[]){
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         if (flag == 1) {
-            int sortedFlag = checkSort(intArray,arrayLength,sizeof(int),compareInt);
+            sortedFlag = checkSort(intArray,arrayLength,sizeof(int),compareInt);
         }
         
         delete [] intArray;
@@ -172,6 +172,10 @@ int main(int argc, char* argv[]){
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
+        if (flag == 1) {
+            int sortedFlag = checkSort(doubleArray,arrayLength,sizeof(double),compareDouble);
+        }
+        
         delete [] doubleArray;
     }
     
@@ -186,6 +190,10 @@ int main(int argc, char* argv[]){
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
+        if (flag == 1) {
+            int sortedFlag = checkSort(floatArray,arrayLength,sizeof(float),compareFloat);
+        }
+        
         delete [] floatArray;
     }
     
@@ -199,6 +207,10 @@ int main(int argc, char* argv[]){
         quickSort(longArray,arrayLength,sizeof(long),compareLong);
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        
+        if (flag == 1) {
+            int sortedFlag = checkSort(longArray,arrayLength,sizeof(long),compareLong);
+        }
         
         delete [] longArray;
     }
