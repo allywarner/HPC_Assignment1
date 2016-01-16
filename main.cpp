@@ -115,13 +115,18 @@ int main(int argc, char* argv[]){
         return 1;
     }
     
+    //set a flag if "run" is input
+    int flag = 0;
+    if (argc == 3){
+        flag = 1;
+    }
+    
     //generate a random array of a given length
     int arrayLength = atoi(argv[1]);
-    cout << arrayType << endl;
     string arrayType = argv[2];
-    cout << arrayType << endl;
     
     //for integers
+    int sortedFlag = 1;
     if(arrayType.compare("int")){
         int *intArray = new int[arrayLength];
         for (int i = 0;i < arrayLength; i++){
@@ -131,7 +136,15 @@ int main(int argc, char* argv[]){
         quickSort(intArray,arrayLength,sizeof(int),compareInt);
         clock_t endTime = clock();
         double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
-        cout << "I made it!" << endl;
+        
+        //want to check sortedness before deleting
+        if (flag == 1) {
+            for (int j = 0; j < arrayLength-1; j++) {
+                if (intArray[j] > intArray[j+1]){
+                    int sortedFlag = 0;
+                }
+            }
+        }
         
         delete [] intArray;
     }
@@ -181,6 +194,21 @@ int main(int argc, char* argv[]){
     
     else  {
         cout << "Error. Please input a correct datatype." << endl;
+    }
+    
+    if (argc == 3) {
+        string thirdParameter = argv[3];
+        if (thirdParameter.compare("test")) {
+            cout << "It took " << time << " seconds to sort " << arrayLength << " items in an array with datatype " << arrayType << endl;
+        }
+        else if (thirdParameter.compare("run")){
+            if (sortedFlag == 0) {
+                cout << "This array is not sorted. :(" << endl;
+            }
+            else if (sortedFlag == 1){
+                cout << "This array is sorted! :)" << endl;
+            }
+        }
     }
     
 }
