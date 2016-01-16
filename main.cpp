@@ -95,7 +95,7 @@ int compareFloat(const void* a, const void* b){
     return 0;
 }
 
-int compareStructure(const void* a, const void *b) {
+int comparePoint(const void* a, const void *b) {
     Point da = *(Point *)a;
     Point db = *(Point *)b;
     if (da.y < db.y) return -1;
@@ -226,9 +226,20 @@ int main(int argc, char* argv[]){
         for (int i = 0; i < arrayLength; i++) {
             pointArray[i] = randPoint();
         }
+        
+        clock_t startTime = clock();
+        quickSort(pointArray,arrayLength,sizeof(Point),comparePoint);
+        clock_t endTime = clock();
+        time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        
+        if (flag == 1) {
+            sortedFlag = checkSort(pointArray,arrayLength,sizeof(Point),comparePoint);
+        }
+        
+        delete [] pointArray;
     }
     
-    else  {
+    else {
         cout << "Error. Please input a correct datatype." << endl;
     }
     
