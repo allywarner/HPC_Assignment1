@@ -3,6 +3,8 @@
 //High Performance Computing
 
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
 
 using namespace std;
 size_t partition(void*,size_t,size_t,int(*)(const void*, const void*));
@@ -104,14 +106,19 @@ int compareStructure(const void* a, const void *b) {
 }
 
 int main(int argc, char* argv[]){
- 
-    if (argc < 2) {
-        cerr << "Error. Print usage" << endl;
-        return 1;
-    }
     
-    // generate a random array of length n
-    int arrayLength = atoi(argv[1]);
+    string arrayLengthInput = " ";
+    string arrayType = " ";
+    
+    cout << "Enter the length of a random array: \n> ";
+    getline(cin,arrayLengthInput);
+    
+    cout << "Please enter the desired data type using the following notation (int, double, float, long or coordinate points: \n> ";
+    getline(cin,arrayType);
+    
+    //generate a random array of length n
+    int arrayLength = atoi(arrayLengthInput);
+    cout << arrayLength << endl;
     
     //for integers
     int *intArray = new int[arrayLength];
