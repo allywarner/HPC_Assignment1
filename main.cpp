@@ -109,17 +109,17 @@ int compareStructure(const void* a, const void *b) {
 
 int main(int argc, char* argv[]){
     
-    string arrayLengthInput = " ";
-    string arrayType = " ";
+    //error message if there are less than two inputs
+    if (argc < 2) {
+        cerr << "Error. Please input the length of the array and the datatype. :)" << endl;
+        return 1;
+    }
     
-    cout << "Enter the length of a random array: \n> ";
-    getline(cin,arrayLengthInput);
-    
-    cout << "Please enter the desired data type using the following notation (int, double, float, long or coordinate points: \n> ";
-    getline(cin,arrayType);
-    
-    //generate a random array of length n
-    int arrayLength = atoi(arrayLengthInput.c_str());
+    //generate a random array of a given length
+    int arrayLength = atoi(argv[1]);
+    cout << arrayType << endl;
+    string arrayType = argv[2];
+    cout << arrayType << endl;
     
     //for integers
     if(arrayType.compare("int")){
@@ -131,6 +131,7 @@ int main(int argc, char* argv[]){
         quickSort(intArray,arrayLength,sizeof(int),compareInt);
         clock_t endTime = clock();
         double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        cout << "I made it!" << endl;
         
         delete [] intArray;
     }
@@ -176,6 +177,7 @@ int main(int argc, char* argv[]){
 
         delete [] longArray;
     }
+    //for coordinate points structure
     
     else  {
         cout << "Error. Please input a correct datatype." << endl;
