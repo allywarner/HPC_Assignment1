@@ -129,7 +129,7 @@ Point randPoint(){
 
 int main(int argc, char* argv[]){
     
-    int sortedFlag = 1;
+    int sortedFlag = 2;
     
     double time = 0;
     
