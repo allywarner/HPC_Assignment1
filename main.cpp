@@ -120,6 +120,12 @@ int checkSort(const void* array, size_t arrayLength, size_t elementSize, int (*c
     return 1;
 }
 
+Point randPoint(){
+    double x = ((double)rand())/RAND_MAX;
+    double y = ((double)rand())/RAND_MAX;
+    return {x,y};
+}
+
 
 int main(int argc, char* argv[]){
     
@@ -165,7 +171,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("double") == 0){
         double *doubleArray = new double[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            doubleArray[i] = ((double)rand())/RAND_MAX;;
+            doubleArray[i] = ((double)rand())/RAND_MAX;
         }
         clock_t startTime = clock();
         quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
@@ -183,7 +189,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("float") == 0){
         float *floatArray = new float[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            floatArray[i] = ((float)rand())/RAND_MAX;;
+            floatArray[i] = ((float)rand())/RAND_MAX;
         }
         clock_t startTime = clock();
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
@@ -214,7 +220,14 @@ int main(int argc, char* argv[]){
         
         delete [] longArray;
     }
+    
     //for coordinate points structure
+    else if(arrayType.compare("coordinate") == 0)){
+        Point *pointArray = new Point[arrayLength];
+        for (int i = ); i < arrayLength; i++) {
+            pointArray[i] = randPoint();
+        }
+    }
     
     else  {
         cout << "Error. Please input a correct datatype." << endl;
