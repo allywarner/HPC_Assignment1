@@ -118,42 +118,53 @@ int main(int argc, char* argv[]){
     
     //generate a random array of length n
     int arrayLength = atoi(arrayLengthInput);
-    cout << arrayLength << endl;
     
     //for integers
-    int *intArray = new int[arrayLength];
-    for (int i = 0;i < arrayLength; i++){
-        intArray[i] = rand();
+    if(arrayType.compare("int")){
+        int *intArray = new int[arrayLength];
+        for (int i = 0;i < arrayLength; i++){
+            intArray[i] = rand();
+        }
+        quickSort(intArray,arrayLength,sizeof(int),compareInt);
+        
+        delete [] intArray;
     }
-    quickSort(intArray,arrayLength,sizeof(int),compareInt);
-    
-    delete [] intArray;
     
     //for doubles
-    double *doubleArray = new double[arrayLength];
-    for (int i = 0;i < arrayLength; i++){
-        doubleArray[i] = rand()/RAND_MAX;
+    else if(arrayType.compare("double")){
+        double *doubleArray = new double[arrayLength];
+        for (int i = 0;i < arrayLength; i++){
+            doubleArray[i] = rand()/RAND_MAX;
+        }
+        quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
+        
+        delete [] doubleArray;
     }
-    quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
-    
-    delete [] doubleArray;
     
     //for floats
-    float *floatArray = new float[arrayLength];
-    for (int i = 0;i < arrayLength; i++){
-        floatArray[i] = rand()/RAND_MAX;
+    else if(arrayType.compare("float")){
+        float *floatArray = new float[arrayLength];
+        for (int i = 0;i < arrayLength; i++){
+            floatArray[i] = rand()/RAND_MAX;
+        }
+        quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
+        
+        delete [] floatArray;
     }
-    quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
-
-    delete [] floatArray;
     
     //for longs
-    long *longArray = new long[arrayLength];
-    for (int i = 0;i < arrayLength; i++){
-        longArray[i] = rand()/RAND_MAX;
+    else if(arrayType.compare("long")){
+        long *longArray = new long[arrayLength];
+        for (int i = 0;i < arrayLength; i++){
+            longArray[i] = rand()/RAND_MAX;
+        }
+        quickSort(longArray,arrayLength,sizeof(long),compareLong);
+        
+        delete [] longArray;
     }
-    quickSort(longArray,arrayLength,sizeof(long),compareLong);
     
-    delete [] longArray;
+    else {
+        cout << "Error. Please input a correct datatype." << endl;
+    }
     
 }
