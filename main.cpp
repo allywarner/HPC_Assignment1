@@ -173,7 +173,7 @@ int main(int argc, char* argv[]){
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         if (flag == 1) {
-            int sortedFlag = checkSort(doubleArray,arrayLength,sizeof(double),compareDouble);
+            sortedFlag = checkSort(doubleArray,arrayLength,sizeof(double),compareDouble);
         }
         
         delete [] doubleArray;
@@ -191,7 +191,7 @@ int main(int argc, char* argv[]){
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         if (flag == 1) {
-            int sortedFlag = checkSort(floatArray,arrayLength,sizeof(float),compareFloat);
+            sortedFlag = checkSort(floatArray,arrayLength,sizeof(float),compareFloat);
         }
         
         delete [] floatArray;
@@ -209,7 +209,7 @@ int main(int argc, char* argv[]){
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         if (flag == 1) {
-            int sortedFlag = checkSort(longArray,arrayLength,sizeof(long),compareLong);
+            sortedFlag = checkSort(longArray,arrayLength,sizeof(long),compareLong);
         }
         
         delete [] longArray;
