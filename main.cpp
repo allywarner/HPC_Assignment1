@@ -138,7 +138,6 @@ int main(int argc, char* argv[]){
         cerr << "Error. Please input the length of the array and the datatype. :)" << endl;
         return 1;
     }
-    
     //set a flag if "run" is input
     int flag = 0;
     if (argc == 4){
@@ -222,9 +221,9 @@ int main(int argc, char* argv[]){
     }
     
     //for coordinate points structure
-    else if(arrayType.compare("coordinate") == 0)){
+    else if (arrayType.compare("coordinate") == 0){
         Point *pointArray = new Point[arrayLength];
-        for (int i = ); i < arrayLength; i++) {
+        for (int i = 0; i < arrayLength; i++) {
             pointArray[i] = randPoint();
         }
     }
