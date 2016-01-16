@@ -17,8 +17,6 @@ typedef struct _Point {
     double y;
 } Point;
 
-int sortedFlag = 1;
-
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
     
     if (arraySize > 0){
@@ -116,14 +114,16 @@ int checkSort(const void* array, size_t arrayLength, size_t elementSize, int (*c
     
     for (int j = 0; j < arrayLength-1; j++) {
         if (compar(arrayChar+(j*elementSize),arrayChar+((j+1)*elementSize)) == 1){
-            sortedFlag = 0;
+            return 0;
         }
     }
-    return sortedFlag;
+    return 1;
 }
 
 
 int main(int argc, char* argv[]){
+    
+    int sortedFlag = 1;
     
     double time = 0;
     
