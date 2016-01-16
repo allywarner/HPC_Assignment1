@@ -183,7 +183,7 @@ int main(int argc, char* argv[]){
     else if(arrayType.compare("float") == 0){
         float *floatArray = new float[arrayLength];
         for (int i = 0;i < arrayLength; i++){
-            doubleArray[i] = ((float)rand())/RAND_MAX;;
+            floatArray[i] = ((float)rand())/RAND_MAX;;
         }
         clock_t startTime = clock();
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
