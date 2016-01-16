@@ -120,7 +120,7 @@ int main(int argc, char* argv[]){
     
     //set a flag if "run" is input
     int flag = 0;
-    if (argc == 2){
+    if (argc == 4){
         flag = 1;
     }
     
@@ -129,7 +129,7 @@ int main(int argc, char* argv[]){
     string arrayType = argv[2];
     
     //for integers
-    if(arrayType.compare("int")){
+    if(arrayType.compare("int")==0){
         int *intArray = new int[arrayLength];
         for (int i = 0;i < arrayLength; i++){
             intArray[i] = rand();
@@ -152,7 +152,7 @@ int main(int argc, char* argv[]){
     }
     
     //for doubles
-    else if(arrayType.compare("double")){
+    else if(arrayType.compare("double") == 0){
         double *doubleArray = new double[arrayLength];
         for (int i = 0;i < arrayLength; i++){
             doubleArray[i] = rand()/RAND_MAX;
@@ -166,7 +166,7 @@ int main(int argc, char* argv[]){
     }
     
     //for floats
-    else if(arrayType.compare("float")){
+    else if(arrayType.compare("float") == 0){
         float *floatArray = new float[arrayLength];
         for (int i = 0;i < arrayLength; i++){
             floatArray[i] = rand()/RAND_MAX;
@@ -180,7 +180,7 @@ int main(int argc, char* argv[]){
     }
     
     //for longs
-    else if(arrayType.compare("long")){
+    else if(arrayType.compare("long") == 0){
         long *longArray = new long[arrayLength];
         for (int i = 0;i < arrayLength; i++){
             longArray[i] = rand()/RAND_MAX;
@@ -198,12 +198,12 @@ int main(int argc, char* argv[]){
         cout << "Error. Please input a correct datatype." << endl;
     }
     
-    if (argc == 2) {
+    if (argc == 3) {
         string thirdParameter = argv[3];
-        if (thirdParameter.compare("test")) {
+        if (thirdParameter.compare("test") == 0) {
             cout << "It took " << time << " seconds to sort " << arrayLength << " items in an array with datatype " << arrayType << endl;
         }
-        else if (thirdParameter.compare("run")){
+        else if (thirdParameter.compare("run") == 0){
             if (sortedFlag == 0) {
                 cout << "This array is not sorted. :(" << endl;
             }
