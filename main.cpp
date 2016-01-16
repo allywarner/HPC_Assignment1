@@ -5,6 +5,8 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
+#include <ctime>
 
 using namespace std;
 size_t partition(void*,size_t,size_t,int(*)(const void*, const void*));
@@ -125,7 +127,10 @@ int main(int argc, char* argv[]){
         for (int i = 0;i < arrayLength; i++){
             intArray[i] = rand();
         }
+        clock_t startTime = clock();
         quickSort(intArray,arrayLength,sizeof(int),compareInt);
+        clock_t endTime = clock();
+        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         delete [] intArray;
     }
@@ -136,7 +141,10 @@ int main(int argc, char* argv[]){
         for (int i = 0;i < arrayLength; i++){
             doubleArray[i] = rand()/RAND_MAX;
         }
+        clock_t startTime = clock();
         quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
+        clock_t endTime = clock();
+        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         delete [] doubleArray;
     }
@@ -147,8 +155,11 @@ int main(int argc, char* argv[]){
         for (int i = 0;i < arrayLength; i++){
             floatArray[i] = rand()/RAND_MAX;
         }
+        clock_t startTime = clock();
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
-        
+        clock_t endTime = clock();
+        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+
         delete [] floatArray;
     }
     
@@ -158,12 +169,15 @@ int main(int argc, char* argv[]){
         for (int i = 0;i < arrayLength; i++){
             longArray[i] = rand()/RAND_MAX;
         }
+        clock_t startTime = clock();
         quickSort(longArray,arrayLength,sizeof(long),compareLong);
-        
+        clock_t endTime = clock();
+        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+
         delete [] longArray;
     }
     
-    else {
+    else  {
         cout << "Error. Please input a correct datatype." << endl;
     }
     
