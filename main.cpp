@@ -119,7 +119,7 @@ int main(int argc, char* argv[]){
     getline(cin,arrayType);
     
     //generate a random array of length n
-    int arrayLength = atoi(arrayLengthInput);
+    int arrayLength = atoi(arrayLengthInput.c_str());
     
     //for integers
     if(arrayType.compare("int")){
