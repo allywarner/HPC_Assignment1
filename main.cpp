@@ -143,7 +143,7 @@ int main(int argc, char* argv[]){
         if (flag == 1) {
             for (int j = 0; j < arrayLength-1; j++) {
                 if (intArray[j] > intArray[j+1]){
-                    int sortedFlag = 0;
+                    sortedFlag = 0;
                 }
             }
         }
