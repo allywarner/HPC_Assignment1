@@ -17,6 +17,8 @@ typedef struct _Point {
     double y;
 } Point;
 
+int sortedFlag = 1;
+
 void quickSort (void* arrayBase, size_t arraySize, size_t elementSize, int (*compar)(const void*,const void*)){
     
     if (arraySize > 0){
@@ -107,13 +109,26 @@ int compareStructure(const void* a, const void *b) {
     return 0;
 }
 
+//want to check sortedness before deleting
+int checkSort(const void* array, size_t arrayLength, size_t elementSize, int (*compar)(const void*, const void*)){
+    
+    char* arrayChar = (char*)array;
+    
+    for (int j = 0; j < arrayLength-1; j++) {
+        if (compar(arrayChar+(j*elementSize),arrayChar+((j+1)*elementSize)) == 1){
+            sortedFlag = 0;
+        }
+    }
+    return sortedFlag;
+}
+
+
 int main(int argc, char* argv[]){
     
-    int sortedFlag = 1;
     double time = 0;
     
     //error message if there are less than two inputs
-    if (argc < 2) {
+    if (argc < 3) {
         cerr << "Error. Please input the length of the array and the datatype. :)" << endl;
         return 1;
     }
@@ -139,13 +154,8 @@ int main(int argc, char* argv[]){
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
-        //want to check sortedness before deleting
         if (flag == 1) {
-            for (int j = 0; j < arrayLength-1; j++) {
-                if (intArray[j] > intArray[j+1]){
-                    sortedFlag = 0;
-                }
-            }
+            int sortedFlag = checkSort(intArray,arrayLength,sizeof(int),compareInt);
         }
         
         delete [] intArray;
@@ -175,7 +185,7 @@ int main(int argc, char* argv[]){
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
-
+        
         delete [] floatArray;
     }
     
@@ -189,7 +199,7 @@ int main(int argc, char* argv[]){
         quickSort(longArray,arrayLength,sizeof(long),compareLong);
         clock_t endTime = clock();
         time = double(endTime - startTime)/(CLOCKS_PER_SEC);
-
+        
         delete [] longArray;
     }
     //for coordinate points structure
@@ -198,10 +208,10 @@ int main(int argc, char* argv[]){
         cout << "Error. Please input a correct datatype." << endl;
     }
     
-    if (argc == 3) {
+    if (argc == 4) {
         string thirdParameter = argv[3];
         if (thirdParameter.compare("test") == 0) {
-            cout << "It took " << time << " seconds to sort " << arrayLength << " items in an array with datatype " << arrayType << endl;
+            cout << "It took " << time << " seconds to sort " << arrayLength << " items in an array with datatype " << arrayType << "!" << endl;
         }
         else if (thirdParameter.compare("run") == 0){
             if (sortedFlag == 0) {
