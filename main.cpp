@@ -120,7 +120,7 @@ int main(int argc, char* argv[]){
     
     //set a flag if "run" is input
     int flag = 0;
-    if (argc == 3){
+    if (argc == 2){
         flag = 1;
     }
     
@@ -198,7 +198,7 @@ int main(int argc, char* argv[]){
         cout << "Error. Please input a correct datatype." << endl;
     }
     
-    if (argc == 3) {
+    if (argc == 2) {
         string thirdParameter = argv[3];
         if (thirdParameter.compare("test")) {
             cout << "It took " << time << " seconds to sort " << arrayLength << " items in an array with datatype " << arrayType << endl;
