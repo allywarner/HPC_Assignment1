@@ -221,7 +221,7 @@ int main(int argc, char* argv[]){
     }
     
     //for coordinate points structure
-    else if (arrayType.compare("coordinate") == 0){
+    else if (arrayType.compare("point") == 0){
         Point *pointArray = new Point[arrayLength];
         for (int i = 0; i < arrayLength; i++) {
             pointArray[i] = randPoint();
