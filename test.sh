@@ -1,11 +1,10 @@
 #!/bin/bash
-source=""int" "long" "float" "double" "coordinate""
+source=""int" "long" "float" "double" "point""
 for i in $source;
     do
-        echo $i
-    for j in 'seq 1 10'
+    for j in `seq 1 10`;
         do
-            echo $(($j * 1000))
-            ./hw1 $j $i test
+            size=$(($j * 100000))
+            ./hw1 $size $i test
         done
     done
