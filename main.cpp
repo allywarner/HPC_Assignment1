@@ -109,6 +109,9 @@ int compareStructure(const void* a, const void *b) {
 
 int main(int argc, char* argv[]){
     
+    int sortedFlag = 1;
+    double time = 0;
+    
     //error message if there are less than two inputs
     if (argc < 2) {
         cerr << "Error. Please input the length of the array and the datatype. :)" << endl;
@@ -126,7 +129,6 @@ int main(int argc, char* argv[]){
     string arrayType = argv[2];
     
     //for integers
-    int sortedFlag = 1;
     if(arrayType.compare("int")){
         int *intArray = new int[arrayLength];
         for (int i = 0;i < arrayLength; i++){
@@ -135,7 +137,7 @@ int main(int argc, char* argv[]){
         clock_t startTime = clock();
         quickSort(intArray,arrayLength,sizeof(int),compareInt);
         clock_t endTime = clock();
-        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         //want to check sortedness before deleting
         if (flag == 1) {
@@ -158,7 +160,7 @@ int main(int argc, char* argv[]){
         clock_t startTime = clock();
         quickSort(doubleArray,arrayLength,sizeof(double),compareDouble);
         clock_t endTime = clock();
-        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        time = double(endTime - startTime)/(CLOCKS_PER_SEC);
         
         delete [] doubleArray;
     }
@@ -172,7 +174,7 @@ int main(int argc, char* argv[]){
         clock_t startTime = clock();
         quickSort(floatArray,arrayLength,sizeof(float),compareFloat);
         clock_t endTime = clock();
-        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        time = double(endTime - startTime)/(CLOCKS_PER_SEC);
 
         delete [] floatArray;
     }
@@ -186,7 +188,7 @@ int main(int argc, char* argv[]){
         clock_t startTime = clock();
         quickSort(longArray,arrayLength,sizeof(long),compareLong);
         clock_t endTime = clock();
-        double time = double(endTime - startTime)/(CLOCKS_PER_SEC);
+        time = double(endTime - startTime)/(CLOCKS_PER_SEC);
 
         delete [] longArray;
     }
